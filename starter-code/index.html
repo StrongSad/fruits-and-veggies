@@ -1,28 +1,67 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Fruit and Veggies</title>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/style.css">
+<html ng-app = "MyApp">
+  <head>
+    <title>Fruit and Veggies</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
-        <script src="js/fruit_and_veggies_test.js"></script>
-        <script src="js/app.js"></script>
-    </head>
-    <body>
-        <div class="container">
-            <h1>Fruit and Veggies</h1>
-            <div class="row">
-                <div class="col-sm-4">
-                    col 1
-                </div>
-                <div class="col-sm-4">
-                    col 2
-                </div>
-                <div class="col-sm-4">
-                    col 3
-                </div>                        
-            </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
+    <script src="js/fruit_and_veggies_test.js"></script>
+    <script src="js/app.js"></script>
+    <style type="text/css">
+      .red {
+        color: red;
+      }
+
+      .green {
+        color: green;
+      }
+    </style>
+  </head>
+  <body ng-controller="HomeCtrl">
+    <div class="container">
+
+
+      <h1>Fruit and Veggies</h1>
+
+
+      <div class="row">
+        <div class="col-sm-4">
+          <h1>Fruits</h1>
+          <ul>
+            <li ng-repeat="fruit in myFruitsList track by $index"><div class="well" ><p ng-class="fruitClasses[$index]">{{fruit}}<button type="button" class="btn btn-primary pull-right" ng-click="toAssFromFruit($index)"><span class="glyphicon glyphicon-chevron-right"></span></button></p></div></li>
+          </ul>
         </div>
-    </body>
+
+
+        <div class="col-sm-4">
+          <h1>Assorted Goods</h1>
+          
+            <div class="well" ng-repeat="items in fruitsAndVeggiesList track by $index">
+              <p align="center">
+                <button type="button" class="btn btn-primary pull-left" ng-click="moveLeft($index, items)">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                </button>
+                {{items}}
+                <button type="button" class="btn btn-primary pull-right" ng-click="moveRight($index, items)">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                </button>
+              </p>
+            </div>
+         
+        </div>
+
+
+        <div class="col-sm-4">
+          <h1>Veggies</h1>
+          <ul>
+            <li ng-repeat="veggies in myVeggiesList track by $index"><div class="well"><p ng-class="myClassName"><button type="button" class="btn btn-primary pull-left" ng-click="toAssFromVeggies($index, veggies)"><span class="glyphicon glyphicon-chevron-left"></span></button>{{veggies}}</p></div></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </body>
 </html>
+
+l
